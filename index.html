@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanguard Academy | Premier IIT-JEE, NEET & Foundation Institute</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#4f46e5',
+              600: '#4338ca',
+              700: '#3730a3',
+              900: '#1e1b4b',
+              950: '#0f0d26'
+            },
+            accent: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Utilities & Animations */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+    .page-section {
+      display: none;
+      animation: fadeIn 0.35s ease-out forwards;
+    }
+    .page-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .hero-mesh {
+      background-color: #0f0d26;
+      background-image: 
+        radial-gradient(at 15% 15%, hsla(245,85%,55%,0.35) 0px, transparent 50%),
+        radial-gradient(at 85% 20%, hsla(38,95%,55%,0.2) 0px, transparent 45%),
+        radial-gradient(at 50% 85%, hsla(165,80%,40%,0.2) 0px, transparent 50%);
+    }
+    /* Custom Scrollbar for Chat */
+    .chat-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .chat-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- ==================== LIVE ANNOUNCEMENT BAR ==================== -->
+  <div class="bg-brand-950 text-white text-xs sm:text-sm py-2.5 overflow-hidden border-b border-white/10 relative z-50">
+    <div class="animate-marquee space-x-12 px-4">
+      <span class="inline-flex items-center gap-2"><span class="bg-amber-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[11px] uppercase">New Batch</span> <strong>IIT-JEE & NEET 2027 Target Batch</strong> starts Nov 5 — Only 11 seats left in Batch A!</span>
+      <span class="inline-flex items-center gap-2"><span class="bg-emerald-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[11px] uppercase">Results</span> Vanguardians secure <strong>AIR 14, 29 & 64</strong> in JEE Advanced 2026!</span>
+      <span class="inline-flex items-center gap-2"><span class="bg-indigo-500 text-white font-bold px-2 py-0.5 rounded text-[11px] uppercase">V-SAT 2026</span> Calculate your instant up to <strong>90% Scholarship</strong> on our Scholarship Portal.</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="inline-flex items-center gap-2"><span class="bg-amber-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[11px] uppercase">New Batch</span> <strong>IIT-JEE & NEET 2027 Target Batch</strong> starts Nov 5 — Only 11 seats left in Batch A!</span>
+      <span class="inline-flex items-center gap-2"><span class="bg-emerald-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[11px] uppercase">Results</span> Vanguardians secure <strong>AIR 14, 29 & 64</strong> in JEE Advanced 2026!</span>
+    </div>
+  </div>
+
+  <!-- ==================== STICKY NAVBAR ==================== -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-600 to-indigo-900 flex items-center justify-center text-white font-display font-extrabold text-2xl shadow-lg shadow-brand-500/30 group-hover:scale-105 transition">
+          V
+        </div>
+        <div>
+          <span class="font-display font-extrabold text-xl tracking-tight text-slate-900 block leading-none">VANGUARD</span>
+          <span class="text-[11px] font-bold tracking-widest uppercase text-brand-600">IIT-JEE • NEET • Foundation</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+        <button onclick="navigateTo('home')" data-nav="home" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition text-brand-600 bg-brand-50">Home</button>
+        <button onclick="navigateTo('courses')" data-nav="courses" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition">Courses & Fees</button>
+        <button onclick="navigateTo('results')" data-nav="results" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition">Results & Rankers</button>
+        <button onclick="navigateTo('scholarship')" data-nav="scholarship" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition flex items-center gap-1.5">
+          <span>Scholarship Calculator</span>
+          <span class="bg-amber-100 text-amber-800 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full">HOT</span>
+        </button>
+        <button onclick="navigateTo('contact')" data-nav="contact" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition">Campuses & Contact</button>
+      </nav>
+
+      <!-- CTA Buttons -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="tel:+919876543210" class="text-slate-700 hover:text-brand-600 font-semibold text-sm flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-100 transition">
+          <i class="fa-solid fa-phone-volume text-brand-600"></i>
+          <span class="hidden lg:inline">+91 98765 43210</span>
+        </a>
+        <button onclick="openDemoModal()" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-amber-300"></i> Book Free Demo
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">
+        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-5 space-y-2">
+      <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-800 hover:bg-brand-50 hover:text-brand-600">🏠 Home</button>
+      <button onclick="navigateTo('courses'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-800 hover:bg-brand-50 hover:text-brand-600">📚 Courses & Fee Structure</button>
+      <button onclick="navigateTo('results'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-800 hover:bg-brand-50 hover:text-brand-600">🏆 Hall of Fame (Results)</button>
+      <button onclick="navigateTo('scholarship'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-800 hover:bg-brand-50 hover:text-brand-600">🧮 Scholarship Calculator & Quiz</button>
+      <button onclick="navigateTo('contact'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-800 hover:bg-brand-50 hover:text-brand-600">📍 Campuses & Contact</button>
+      <div class="pt-2 border-t border-slate-100 flex gap-2">
+        <button onclick="openDemoModal(); toggleMobileMenu()" class="w-full bg-brand-600 text-white font-bold py-3 rounded-xl shadow">Book Free 3-Day Demo Pass</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- PAGE 1: HOME PAGE (#home)                                             -->
+  <!-- ===================================================================== -->
+  <main id="page-home" class="page-section active">
+    <!-- HERO SECTION -->
+    <section class="hero-mesh text-white relative overflow-hidden py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <!-- Left Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/15 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium text-amber-300">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              Admissions Open for 2026–27 Classroom & Hybrid Batches
+            </div>
+
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.12] tracking-tight">
+              Where Discipline Meets <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-orange-400">Top All-India Ranks.</span>
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+              Stop getting lost in 200-student crowded halls. Experience strictly capped <strong>40-student smart batches</strong>, daily 1-on-1 IITian/Doctor doubt tables, and AI-tracked test analytics.
+            </p>
+
+            <!-- Hero CTAs -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button onclick="openDemoModal()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-display font-bold px-7 py-4 rounded-xl shadow-xl shadow-amber-400/20 transition transform hover:-translate-y-0.5 flex items-center gap-2.5 text-base">
+                <span>Claim Free 3-Day Demo Pass</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button onclick="navigateTo('scholarship')" class="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-4 rounded-xl backdrop-blur transition flex items-center gap-2 text-base">
+                <i class="fa-solid fa-calculator text-amber-300"></i>
+                <span>Calculate Your Scholarship</span>
+              </button>
+            </div>
+
+            <!-- Trust Metrics -->
+            <div class="pt-6 grid grid-cols-3 gap-4 sm:gap-8 border-t border-white/10">
+              <div>
+                <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">1,480+</div>
+                <div class="text-xs sm:text-sm text-slate-400">IIT & AIIMS Selections</div>
+              </div>
+              <div>
+                <div class="font-display font-extrabold text-2xl sm:text-3xl text-amber-400">38.4%</div>
+                <div class="text-xs sm:text-sm text-slate-400">Selection Ratio (2026)</div>
+              </div>
+              <div>
+                <div class="font-display font-extrabold text-2xl sm:text-3xl text-emerald-400">4.9/5 ★</div>
+                <div class="text-xs sm:text-sm text-slate-400">Parent Trust Rating</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Quick Callback & Live Batch Card -->
+          <div class="lg:col-span-5">
+            <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100 relative">
+              <div class="absolute -top-3.5 right-6 bg-emerald-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                <i class="fa-brands fa-whatsapp mr-1"></i> 60-Sec Instant Brochure
+              </div>
+
+              <h3 class="font-display font-bold text-2xl text-slate-900">Get Batch Details & Fee PDF</h3>
+              <p class="text-slate-500 text-sm mt-1">Enter your details to receive the syllabus & fee structure directly on WhatsApp.</p>
+
+              <form onsubmit="handleQuickEnquiry(event)" class="mt-6 space-y-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Student Full Name *</label>
+                  <input type="text" id="hero-name" required placeholder="e.g., Aarav Sharma" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm font-medium" />
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Target Exam *</label>
+                    <select id="hero-exam" class="w-full px-3 py-3 rounded-xl border border-slate-200 focus:border-brand-600 outline-none text-sm font-medium bg-white">
+                      <option value="IIT-JEE (Mains + Adv)">IIT-JEE (Mains+Adv)</option>
+                      <option value="NEET-UG Medical">NEET-UG (Medical)</option>
+                      <option value="Foundation (Class 9-10)">Foundation (Class 9-10)</option>
+                      <option value="CUET & Boards">CUET & Class 12 Boards</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Current Class *</label>
+                    <select id="hero-class" class="w-full px-3 py-3 rounded-xl border border-slate-200 focus:border-brand-600 outline-none text-sm font-medium bg-white">
+                      <option value="Class 11th">Class 11th</option>
+                      <option value="Class 12th">Class 12th</option>
+                      <option value="12th Pass (Dropper)">12th Pass (Dropper)</option>
+                      <option value="Class 9th / 10th">Class 9th / 10th</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">WhatsApp Number *</label>
+                  <input type="tel" id="hero-phone" required pattern="[0-9]{10}" placeholder="10-digit mobile number" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm font-medium" />
+                </div>
+
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-display font-bold py-3.5 rounded-xl shadow-lg shadow-brand-600/25 transition flex items-center justify-center gap-2 text-base">
+                  <i class="fa-brands fa-whatsapp text-lg"></i> Send Me Fee Structure & Brochure
+                </button>
+              </form>
+
+              <!-- Live Scarcity Bar -->
+              <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span><i class="fa-solid fa-fire text-orange-500 mr-1"></i> Next Scholarship Test: <strong>This Sunday, 10 AM</strong></span>
+                <span class="font-bold text-brand-600 cursor-pointer hover:underline" onclick="navigateTo('scholarship')">Register Free →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY VANGUARD BENTO GRID -->
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3.5 py-1.5 rounded-full">The Vanguard Advantage</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 mt-3">Engineered to Turn Average Scorers Into Rankers</h2>
+        <p class="text-slate-600 mt-3">Why parents across the region switch their children from mass-market coaching factories to Vanguard's precision ecosystem.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl transition group">
+          <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl mb-5 group-hover:bg-brand-600 group-hover:text-white transition">
+            <i class="fa-solid fa-users-viewfinder"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-900">Strictly 40 Students/Batch</h3>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed">No backbenchers ignored. Every teacher knows each student by name, weak chapter, and mock test trajectory.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl transition group">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-5 group-hover:bg-amber-500 group-hover:text-white transition">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-900">CBT Lab & Error-Log Analytics</h3>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed">Weekly NTA-pattern Computer Based Tests that generate a personalized "Mistake Remedies Sheet" for every student.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl transition group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-5 group-hover:bg-emerald-600 group-hover:text-white transition">
+            <i class="fa-solid fa-bell"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-slate-900">Biometric Parent WhatsApp Alerts</h3>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed">Automated entry/exit attendance ping and Sunday test rank cards delivered directly to parents' WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAR FACULTY SECTION -->
+    <section class="py-16 bg-slate-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="text-amber-400 font-bold text-xs uppercase tracking-widest">Learn From The Masters</span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-2">Permanent Senior Core Faculty</h2>
+          </div>
+          <p class="text-slate-400 text-sm max-w-md">Zero teacher poaching mid-session. The mentors you meet in the demo class teach your batch until the final exam day.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Faculty 1 -->
+          <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 hover:border-amber-400/50 transition">
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Dr. R.K. Verma" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-amber-400" />
+              <div>
+                <h4 class="font-display font-bold text-lg">Er. R.K. Singhania</h4>
+                <p class="text-amber-400 text-xs font-bold uppercase">HOD Physics • B.Tech IIT Delhi</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-xs mt-4 leading-relaxed">16+ Years Ex-Kota Senior Faculty. Mentored 45+ Top-500 JEE Advanced rankers with visual mechanics pedagogy.</p>
+          </div>
+
+          <!-- Faculty 2 -->
+          <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 hover:border-amber-400/50 transition">
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Dr. Ananya Nair" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-emerald-400" />
+              <div>
+                <h4 class="font-display font-bold text-lg">Dr. Siddharth Rao</h4>
+                <p class="text-emerald-400 text-xs font-bold uppercase">HOD Biology • MBBS VMMC</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-xs mt-4 leading-relaxed">12+ Years experience. Famous for his NCERT Line-by-Line Memory Maps that helped 110+ students score 360/360 in Bio.</p>
+          </div>
+
+          <!-- Faculty 3 -->
+          <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 hover:border-amber-400/50 transition">
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Prof. M.S. Chauhan" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-indigo-400" />
+              <div>
+                <h4 class="font-display font-bold text-lg">Prof. Deshmukh Sir</h4>
+                <p class="text-indigo-400 text-xs font-bold uppercase">HOD Mathematics • IIT Roorkee</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-xs mt-4 leading-relaxed">14+ Years teaching Calculus & Coordinate Geometry. Author of 3 best-selling JEE problem-solving workbooks.</p>
+          </div>
+
+          <!-- Faculty 4 -->
+          <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 hover:border-amber-400/50 transition">
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Dr. Meera Joshi" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-pink-400" />
+              <div>
+                <h4 class="font-display font-bold text-lg">Dr. Meera Kulkarni</h4>
+                <p class="text-pink-400 text-xs font-bold uppercase">HOD Chemistry • PhD IIT-B</p>
+              </div>
+            </div>
+            <p class="text-slate-300 text-xs mt-4 leading-relaxed">Zero-rote Organic & Physical Chemistry specialist. Turns reaction mechanisms into logical puzzle workflows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="font-display font-extrabold text-3xl text-slate-900">Frequently Asked Questions by Parents</h2>
+        <p class="text-slate-500 text-sm mt-2">Everything you need to know before visiting our campus.</p>
+      </div>
+      <div class="space-y-3">
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 cursor-pointer">
+          <summary class="font-display font-bold text-slate-900 flex justify-between items-center list-none">
+            <span>Can my child attend classes before paying the admission fee?</span>
+            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-slate-600 text-sm mt-3 leading-relaxed">Yes! Every student gets a <strong>Free 3-Day Classroom Demo Pass</strong>. Sit in an ongoing batch, interact with HOD faculty, test our doubt counters, and only enroll once completely satisfied.</p>
+        </details>
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 cursor-pointer">
+          <summary class="font-display font-bold text-slate-900 flex justify-between items-center list-none">
+            <span>What if a student misses a lecture due to illness or school exams?</span>
+            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-slate-600 text-sm mt-3 leading-relaxed">Every classroom is equipped with 4K lecture capture. Students get instant access to the recorded lecture + smart board PDF notes on the Vanguard Student App within 2 hours of class completion.</p>
+        </details>
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 cursor-pointer">
+          <summary class="font-display font-bold text-slate-900 flex justify-between items-center list-none">
+            <span>How can we reduce the tuition fee through scholarships?</span>
+            <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-slate-600 text-sm mt-3 leading-relaxed">Students qualify for up to <strong>90% tuition fee waiver</strong> either via their Class 10th/12th Board marks OR by taking our V-SAT Scholarship Test. Head over to our <button onclick="navigateTo('scholarship')" class="text-brand-600 font-bold underline">Scholarship Calculator Page</button> to check your exact discount right now.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- PAGE 2: COURSES & FEE STRUCTURE (#courses)                            -->
+  <!-- ===================================================================== -->
+  <main id="page-courses" class="page-section py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3.5 py-1.5 rounded-full">2026–27 Academic Programs</span>
+      <h1 class="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 mt-3">Structured Courses & Batch Schedules</h1>
+      <p class="text-slate-600 mt-2">Filter by your target exam below. All classroom programs include printed study modules, CBT test series, and app access.</p>
+    </div>
+
+    <!-- Category Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10">
+      <button onclick="filterCourses('all')" data-course-filter="all" class="course-filter-btn bg-brand-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition shadow">All Programs (6)</button>
+      <button onclick="filterCourses('jee')" data-course-filter="jee" class="course-filter-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-5 py-2.5 rounded-xl text-sm font-bold transition">IIT-JEE (Mains + Adv)</button>
+      <button onclick="filterCourses('neet')" data-course-filter="neet" class="course-filter-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-5 py-2.5 rounded-xl text-sm font-bold transition">NEET-UG Medical</button>
+      <button onclick="filterCourses('foundation')" data-course-filter="foundation" class="course-filter-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-5 py-2.5 rounded-xl text-sm font-bold transition">Foundation (Class 9–10)</button>
+    </div>
+
+    <!-- Dynamic Courses Grid -->
+    <div id="courses-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+      <!-- Populated dynamically via JS -->
+    </div>
+
+    <!-- Daily Routine Comparison Table -->
+    <div class="mt-16 bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm">
+      <h3 class="font-display font-bold text-2xl text-slate-900 mb-2">How a Day at Vanguard Works (Academic Rigor)</h3>
+      <p class="text-slate-500 text-sm mb-6">A structured daily rhythm that eliminates procrastination at home.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-200 text-xs uppercase text-slate-500 bg-slate-50">
+              <th class="p-4 font-bold">Time Slot</th>
+              <th class="p-4 font-bold">Morning Target (Dropper Batch)</th>
+              <th class="p-4 font-bold">Evening Synchronized (11th & 12th)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-sm">
+            <tr>
+              <td class="p-4 font-bold text-brand-600">Slot 1 (90 Mins)</td>
+              <td class="p-4">08:30 AM – 10:00 AM: Core Concept Lecture 1</td>
+              <td class="p-4">03:30 PM – 05:00 PM: Core Concept Lecture 1</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-brand-600">Slot 2 (90 Mins)</td>
+              <td class="p-4">10:15 AM – 11:45 AM: Core Concept Lecture 2</td>
+              <td class="p-4">05:15 PM – 06:45 PM: Core Concept Lecture 2</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-brand-600">Slot 3 (60 Mins)</td>
+              <td class="p-4">12:00 PM – 01:00 PM: Mandatory DPP & Doubt Table</td>
+              <td class="p-4">06:45 PM – 07:45 PM: Mandatory DPP & Doubt Table</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- PAGE 3: RESULTS & HALL OF FAME (#results)                             -->
+  <!-- ===================================================================== -->
+  <main id="page-results" class="page-section py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div>
+        <span class="text-emerald-700 bg-emerald-100 font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">Verified Roll Numbers • Real Classroom Students</span>
+        <h1 class="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 mt-3">Our Hall of Fame</h1>
+      </div>
+      <!-- Year Switcher -->
+      <div class="flex items-center gap-2 bg-slate-200/70 p-1.5 rounded-xl self-start">
+        <button onclick="filterResults('2026')" data-year="2026" class="year-btn bg-white text-slate-900 shadow px-4 py-2 rounded-lg text-sm font-bold transition">2026 Results</button>
+        <button onclick="filterResults('2025')" data-year="2025" class="year-btn text-slate-600 px-4 py-2 rounded-lg text-sm font-bold transition">2025 Results</button>
+        <button onclick="filterResults('2024')" data-year="2024" class="year-btn text-slate-600 px-4 py-2 rounded-lg text-sm font-bold transition">2024 Results</button>
+      </div>
+    </div>
+
+    <!-- Rankers Grid -->
+    <div id="results-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Selection Ratio Analytics Card -->
+    <div class="bg-gradient-to-br from-brand-900 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h3 class="font-display font-bold text-2xl sm:text-3xl">Don't Just Look at Topper Photos. Look at the Selection Ratio.</h3>
+          <p class="text-slate-300 text-sm mt-3 leading-relaxed">Giant institutes enroll 25,000 students and advertise 10 ranks. At Vanguard, out of 380 classroom students in 2026, <strong>146 qualified for NITs, IITs, and Govt Medical Colleges</strong>.</p>
+          <button onclick="openDemoModal()" class="mt-6 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3.5 rounded-xl text-sm transition">
+            Experience Our Classroom Difference →
+          </button>
+        </div>
+        <div class="space-y-5">
+          <div>
+            <div class="flex justify-between text-sm font-bold mb-1.5">
+              <span>Vanguard JEE Mains Cutoff Qualifier Rate (2026)</span>
+              <span class="text-emerald-400">68.4%</span>
+            </div>
+            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+              <div class="bg-emerald-400 h-full rounded-full" style="width: 68.4%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm font-bold mb-1.5">
+              <span>Vanguard NEET 620+ Score Ratio (2026)</span>
+              <span class="text-amber-400">34.2%</span>
+            </div>
+            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+              <div class="bg-amber-400 h-full rounded-full" style="width: 34.2%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm font-bold mb-1.5 text-slate-400">
+              <span>National Coaching Industry Average</span>
+              <span>8.5%</span>
+            </div>
+            <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden">
+              <div class="bg-slate-500 h-full rounded-full" style="width: 8.5%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- PAGE 4: SCHOLARSHIP & FEE CALCULATOR + LIVE QUIZ (#scholarship)       -->
+  <!-- ===================================================================== -->
+  <main id="page-scholarship" class="page-section py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-amber-700 bg-amber-100 font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full">Interactive Fee Transparency Tool</span>
+      <h1 class="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 mt-3">Calculate Your Scholarship & Exact Fee</h1>
+      <p class="text-slate-600 mt-2">Zero hidden charges. Check your instant merit scholarship based on your previous board score or take the 60-second STEM challenge below for an extra 5% waiver!</p>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8 items-start">
+      <!-- Calculator Controls (Left 7 cols) -->
+      <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <h3 class="font-display font-bold text-xl text-slate-900 border-b border-slate-100 pb-4">Step 1: Configure Your Program & Merit Score</h3>
+
+        <!-- Program Selector -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Select Target Program</label>
+          <select id="calc-course" onchange="updateScholarshipCalc()" class="w-full px-4 py-3.5 rounded-xl border border-slate-200 font-semibold text-slate-800 bg-slate-50 focus:bg-white focus:border-brand-600 outline-none">
+            <option value="115000">2-Year IIT-JEE (Class 11th + 12th) — Base Tuition: ₹1,15,000/yr</option>
+            <option value="110000">2-Year NEET-UG (Class 11th + 12th) — Base Tuition: ₹1,10,000/yr</option>
+            <option value="95000">1-Year Dropper / Repeater (JEE / NEET) — Base Tuition: ₹95,000</option>
+            <option value="52000">1-Year Foundation (Class 9th / 10th) — Base Tuition: ₹52,000</option>
+          </select>
+        </div>
+
+        <!-- Board Percentage Slider -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-500">Last Board / Final Exam Percentage</label>
+            <span id="calc-score-display" class="bg-brand-600 text-white font-display font-bold px-3 py-1 rounded-lg text-sm">88%</span>
+          </div>
+          <input type="range" id="calc-score" min="60" max="99" value="88" oninput="updateScholarshipCalc()" class="w-full accent-brand-600 h-2 bg-slate-200 rounded-lg cursor-pointer" />
+          <div class="flex justify-between text-[11px] text-slate-400 font-medium mt-1">
+            <span>60%</span>
+            <span>75% (15% Off)</span>
+            <span>85% (30% Off)</span>
+            <span>92% (50% Off)</span>
+            <span>96%+ (75% Off)</span>
+          </div>
+        </div>
+
+        <!-- Payment Plan Selector -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Preferred Payment Plan</label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="cursor-pointer">
+              <input type="radio" name="payplan" value="lumpsum" checked onchange="updateScholarshipCalc()" class="peer sr-only" />
+              <div class="p-3.5 rounded-xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50/50 transition">
+                <div class="font-bold text-sm text-slate-900">One-Shot Lump Sum</div>
+                <div class="text-xs text-emerald-600 font-semibold">Extra 5% Early-Bird Rebate</div>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="payplan" value="emi" onchange="updateScholarshipCalc()" class="peer sr-only" />
+              <div class="p-3.5 rounded-xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50/50 transition">
+                <div class="font-bold text-sm text-slate-900">3 Easy Installments</div>
+                <div class="text-xs text-slate-500">0% Interest Split Plan</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Mini Quiz Bonus Checkbox -->
+        <div class="bg-amber-50 border border-amber-200/80 rounded-2xl p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div>
+              <div class="font-bold text-sm text-slate-900">Live Diagnostic Quiz Bonus (+5% Off)</div>
+              <div id="quiz-bonus-status" class="text-xs text-slate-600">Scroll down & score 2/3 in the Mini Quiz to unlock!</div>
+            </div>
+          </div>
+          <span id="quiz-badge" class="text-xs font-bold uppercase px-2.5 py-1 rounded bg-slate-200 text-slate-600">Locked</span>
+        </div>
+      </div>
+
+      <!-- Live Fee Breakdown Receipt (Right 5 cols) -->
+      <div class="lg:col-span-5 bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Official Estimate</span>
+            <h3 class="font-display font-bold text-2xl">Your Net Fee Quote</h3>
+          </div>
+          <span id="calc-tier-badge" class="bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold px-3 py-1 rounded-full">35% Waiver Applied</span>
+        </div>
+
+        <div class="space-y-3.5 my-6 text-sm">
+          <div class="flex justify-between text-slate-300">
+            <span>Base Annual Tuition & Study Kit</span>
+            <span id="calc-base-fee" class="font-semibold text-white">₹1,15,000</span>
+          </div>
+          <div class="flex justify-between text-emerald-400">
+            <span>Merit + Payment Plan Scholarship</span>
+            <span id="calc-discount-amt" class="font-bold">- ₹40,250</span>
+          </div>
+          <div class="border-t border-white/10 pt-3 flex justify-between items-baseline">
+            <span class="text-base font-bold">Net Payable Fee</span>
+            <span id="calc-final-fee" class="font-display font-extrabold text-3xl text-amber-400">₹74,750</span>
+          </div>
+          <p id="calc-emi-note" class="text-xs text-slate-400 text-right">Includes all printed modules, CBT Series & GST.</p>
+        </div>
+
+        <button onclick="lockScholarshipWhatsApp()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-base">
+          <i class="fa-brands fa-whatsapp text-lg"></i> Lock This Scholarship Code on WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- 60-SECOND DIAGNOSTIC MINI QUIZ -->
+    <div class="mt-14 bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+        <div>
+          <span class="bg-brand-50 text-brand-600 font-bold text-xs px-3 py-1 rounded-full uppercase">Instant Lead Magnet</span>
+          <h3 class="font-display font-bold text-2xl text-slate-900 mt-2">Take the 60-Second Concept Challenge</h3>
+          <p class="text-slate-500 text-sm">Score at least 2 out of 3 to automatically unlock an <strong>Extra 5% Scholarship Bonus</strong> in the calculator above!</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-6">
+        <!-- Q1 -->
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="text-xs font-bold text-brand-600 uppercase mb-1">Q1 • Physics (Kinematics)</div>
+          <p class="font-semibold text-sm text-slate-900 mb-3">A ball is thrown vertically upward with velocity 20 m/s. Taking g = 10 m/s², what is the maximum height reached?</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="wrong" class="accent-brand-600"> 10 meters</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="correct" class="accent-brand-600"> 20 meters</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" value="wrong" class="accent-brand-600"> 40 meters</label>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="text-xs font-bold text-emerald-600 uppercase mb-1">Q2 • Chemistry (Atomic Structure)</div>
+          <p class="font-semibold text-sm text-slate-900 mb-3">Which of the following species is isoelectronic with Neon (Ne, Z = 10)?</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="correct" class="accent-brand-600"> Mg²⁺ (Magnesium ion)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="wrong" class="accent-brand-600"> Ca²⁺ (Calcium ion)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" value="wrong" class="accent-brand-600"> Cl⁻ (Chloride ion)</label>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="text-xs font-bold text-amber-600 uppercase mb-1">Q3 • Logic & Math</div>
+          <p class="font-semibold text-sm text-slate-900 mb-3">If the roots of quadratic equation x² - 6x + k = 0 are equal, then the value of k is:</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" value="wrong" class="accent-brand-600"> k = 6</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" value="correct" class="accent-brand-600"> k = 9</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" value="wrong" class="accent-brand-600"> k = 12</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+        <button onclick="evaluateMiniQuiz()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-xl shadow transition text-sm">
+          Submit Answers & Claim +5% Bonus
+        </button>
+        <div id="quiz-feedback" class="text-sm font-bold text-slate-700"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- PAGE 5: CAMPUSES & CONTACT (#contact)                                 -->
+  <!-- ===================================================================== -->
+  <main id="page-contact" class="page-section py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-brand-600 font-bold text-xs uppercase tracking-widest bg-brand-50 px-3.5 py-1.5 rounded-full">Visit Our Smart Campuses</span>
+      <h1 class="font-display font-extrabold text-3xl sm:text-5xl text-slate-900 mt-3">Book a 1-on-1 Academic Counseling Session</h1>
+      <p class="text-slate-600 mt-2">Walk into any of our 3 centers between 9:00 AM and 7:30 PM (Monday–Sunday) for a free diagnostic counseling session.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8">
+      <!-- Branch Switcher & Details (5 Cols) -->
+      <div class="lg:col-span-5 space-y-4">
+        <div onclick="selectBranch(0)" class="branch-card cursor-pointer p-5 rounded-2xl border-2 border-brand-600 bg-brand-50/40 transition">
+          <div class="flex justify-between items-start">
+            <h4 class="font-display font-bold text-lg text-slate-900">Main Head Office Campus</h4>
+            <span class="bg-brand-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">Flagship + Hostel</span>
+          </div>
+          <p class="text-slate-600 text-xs mt-1.5"><i class="fa-solid fa-location-dot text-brand-600 mr-1"></i> Plot 14, Sector 14 Commercial Belt, Near Civil Lines Metro / Main Chowk</p>
+          <p class="text-slate-600 text-xs mt-1"><i class="fa-solid fa-phone text-brand-600 mr-1"></i> +91 98765 43210 • 08:00 AM – 08:00 PM</p>
+        </div>
+
+        <div onclick="selectBranch(1)" class="branch-card cursor-pointer p-5 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-300 transition">
+          <div class="flex justify-between items-start">
+            <h4 class="font-display font-bold text-lg text-slate-900">Model Town / West Campus</h4>
+            <span class="bg-slate-200 text-slate-700 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">Classroom + CBT Lab</span>
+          </div>
+          <p class="text-slate-600 text-xs mt-1.5"><i class="fa-solid fa-location-dot text-brand-600 mr-1"></i> 2nd Floor, Apex Plaza, Model Town Main Market Road</p>
+          <p class="text-slate-600 text-xs mt-1"><i class="fa-solid fa-phone text-brand-600 mr-1"></i> +91 98765 43211 • 09:00 AM – 07:30 PM</p>
+        </div>
+
+        <div onclick="selectBranch(2)" class="branch-card cursor-pointer p-5 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-300 transition">
+          <div class="flex justify-between items-start">
+            <h4 class="font-display font-bold text-lg text-slate-900">South City Foundation Wing</h4>
+            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">Class 8–10 Exclusive</span>
+          </div>
+          <p class="text-slate-600 text-xs mt-1.5"><i class="fa-solid fa-location-dot text-brand-600 mr-1"></i> SCO 42, Pocket B, Opposite DAV Public School Gate No. 2</p>
+          <p class="text-slate-600 text-xs mt-1"><i class="fa-solid fa-phone text-brand-600 mr-1"></i> +91 98765 43212 • 02:00 PM – 08:00 PM</p>
+        </div>
+      </div>
+
+      <!-- Direct Counseling Booking Form (7 Cols) -->
+      <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm">
+        <h3 class="font-display font-bold text-2xl text-slate-900">Schedule a Campus Visit or Call Back</h3>
+        <p class="text-slate-500 text-sm mt-1">Our Senior Academic Counselor will confirm your slot within 15 minutes.</p>
+
+        <form onsubmit="handleContactSubmit(event)" class="mt-6 space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Student Name *</label>
+              <input type="text" id="contact-name" required placeholder="Enter full name" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-brand-600 text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Parent / Student Mobile *</label>
+              <input type="tel" id="contact-phone" required pattern="[0-9]{10}" placeholder="10-digit WhatsApp number" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-brand-600 text-sm" />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Preferred Campus</label>
+              <select id="contact-branch" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-brand-600 text-sm bg-white">
+                <option>Main Head Office Campus (Sector 14)</option>
+                <option>Model Town / West Campus</option>
+                <option>South City Foundation Wing</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Preferred Visit Day</label>
+              <select id="contact-day" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-brand-600 text-sm bg-white">
+                <option>Today / Tomorrow Evening</option>
+                <option>This Upcoming Sunday</option>
+                <option>Request Phone Counseling First</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Specific Question (Optional)</label>
+            <textarea id="contact-msg" rows="3" placeholder="Ask about hostel facility, transport van routes, or batch timings..." class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-brand-600 text-sm"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-display font-bold py-4 rounded-xl shadow-lg transition">
+            Confirm Appointment & Send to WhatsApp Desk
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== GLOBAL FOOTER ==================== -->
+  <footer class="bg-slate-950 text-slate-400 pt-16 pb-24 md:pb-12 border-t border-slate-800 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-3 text-white mb-4">
+          <div class="w-9 h-9 rounded-lg bg-brand-600 flex items-center justify-center font-display font-extrabold text-lg">V</div>
+          <span class="font-display font-extrabold text-xl">VANGUARD ACADEMY</span>
+        </div>
+        <p class="text-xs leading-relaxed">Empowering engineering and medical aspirants with small-batch mentorship, CBT testing labs, and transparent results since 2014.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold text-sm uppercase tracking-wider mb-4">Quick Navigation</h4>
+        <ul class="space-y-2 text-sm">
+          <li><button onclick="navigateTo('home')" class="hover:text-white">Home Overview</button></li>
+          <li><button onclick="navigateTo('courses')" class="hover:text-white">Courses & Batch Calendar</button></li>
+          <li><button onclick="navigateTo('results')" class="hover:text-white">Verified Rankers List</button></li>
+          <li><button onclick="navigateTo('scholarship')" class="hover:text-white">Scholarship Calculator</button></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold text-sm uppercase tracking-wider mb-4">Programs</h4>
+        <ul class="space-y-2 text-sm">
+          <li>IIT-JEE (Mains + Advanced)</li>
+          <li>NEET-UG Medical Classroom</li>
+          <li>Olympiad & NTSE Foundation</li>
+          <li>All-India CBT Test Series</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-display font-bold text-sm uppercase tracking-wider mb-4">Admissions Helpline</h4>
+        <p class="text-sm text-white font-bold">+91 98765 43210</p>
+        <p class="text-xs mt-1">admissions@vanguardacademy.in</p>
+        <button onclick="openDemoModal()" class="mt-4 bg-white/10 hover:bg-white/20 text-white text-xs font-bold px-4 py-2.5 rounded-lg border border-white/15 transition">
+          Generate Digital Demo Pass →
+        </button>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-800/80 text-xs flex flex-col sm:flex-row justify-between gap-2">
+      <span>© 2026 Vanguard Educational Society. All rights reserved.</span>
+      <span>Designed for High-Conversion Student Admissions</span>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- FLOATING AI ADMISSIONS COUNSELOR CHATBOT                              -->
+  <!-- ===================================================================== -->
+  <div class="fixed bottom-5 right-5 z-50">
+    <!-- Chat Window -->
+    <div id="chatbot-window" class="hidden w-[350px] sm:w-[385px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden mb-3 flex flex-col" style="height: 510px;">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-brand-700 to-indigo-900 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-robot text-amber-300"></i>
+            </div>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-indigo-900 absolute bottom-0 right-0"></span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-sm leading-tight">Vanguard AI Counselor</h4>
+            <span class="text-[11px] text-indigo-200">Instant Fee, Batch & Demo Assistant</span>
+          </div>
+        </div>
+        <button onclick="toggleChatbot()" class="text-white/70 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Messages Container -->
+      <div id="chat-messages" class="flex-1 p-4 overflow-y-auto chat-scroll space-y-3 bg-slate-50 text-sm">
+        <div class="bg-white border border-slate-200/80 text-slate-800 p-3.5 rounded-2xl rounded-tl-none shadow-sm max-w-[88%]">
+          👋 Namaste! I'm <strong>Vanguard AI</strong>. Ask me anything about 2026–27 fees, batch timings, hostel facilities, or scholarships—or tap a quick option below:
+        </div>
+      </div>
+
+      <!-- Quick Action Chips -->
+      <div class="px-3 py-2 bg-slate-100 border-t border-slate-200 flex gap-1.5 overflow-x-auto no-scrollbar">
+        <button onclick="sendQuickChat('What is the fee structure?')" class="shrink-0 bg-white hover:bg-brand-50 text-brand-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full transition">💰 Fee Structure</button>
+        <button onclick="sendQuickChat('How to get scholarship?')" class="shrink-0 bg-white hover:bg-brand-50 text-brand-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full transition">🎓 Scholarship</button>
+        <button onclick="sendQuickChat('Next batch timings?')" class="shrink-0 bg-white hover:bg-brand-50 text-brand-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full transition">📅 Batch Timings</button>
+        <button onclick="sendQuickChat('Book free demo class')" class="shrink-0 bg-white hover:bg-brand-50 text-brand-700 border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full transition">🎟️ Free Demo</button>
+      </div>
+
+      <!-- Input Box -->
+      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-white border-t border-slate-200 flex items-center gap-2">
+        <input type="text" id="chat-input" placeholder="Type your question (e.g., NEET fee, hostel)..." class="flex-1 text-sm px-3.5 py-2.5 rounded-xl bg-slate-100 focus:bg-white border border-transparent focus:border-brand-500 outline-none" />
+        <button type="submit" class="w-10 h-10 rounded-xl bg-brand-600 hover:bg-brand-700 text-white flex items-center justify-center shadow transition">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Floating Trigger Button -->
+    <button onclick="toggleChatbot()" class="ml-auto bg-brand-600 hover:bg-brand-700 text-white pl-4 pr-5 py-3.5 rounded-full shadow-2xl shadow-brand-600/40 flex items-center gap-3 group transition transform hover:scale-105">
+      <div class="relative">
+        <i class="fa-solid fa-comment-dots text-xl text-amber-300"></i>
+        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping"></span>
+      </div>
+      <div class="text-left">
+        <div class="text-[10px] uppercase tracking-wider text-indigo-200 font-bold leading-none">24/7 AI Helpdesk</div>
+        <div class="font-display font-bold text-sm leading-tight">Ask Counselor</div>
+      </div>
+    </button>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- FREE 3-DAY DEMO PASS MODAL                                            -->
+  <!-- ===================================================================== -->
+  <div id="demo-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-fadeIn">
+      <button onclick="closeDemoModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="demo-form-view">
+        <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Instant Digital Pass</span>
+        <h3 class="font-display font-extrabold text-2xl text-slate-900 mt-2">Generate Free 3-Day Demo Pass</h3>
+        <p class="text-slate-500 text-xs mt-1">Attend 3 live classroom lectures + 1-on-1 doubt session before paying a single rupee.</p>
+
+        <form onsubmit="generateDemoPass(event)" class="mt-5 space-y-3.5">
+          <input type="text" id="modal-name" required placeholder="Student Full Name *" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-brand-600" />
+          <input type="tel" id="modal-phone" required pattern="[0-9]{10}" placeholder="10-Digit WhatsApp Number *" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-brand-600" />
+          <select id="modal-course" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm outline-none focus:border-brand-600 bg-white">
+            <option value="IIT-JEE Target Batch">IIT-JEE Classroom Batch</option>
+            <option value="NEET-UG Target Batch">NEET-UG Medical Batch</option>
+            <option value="Class 9-10 Foundation">Class 9–10 Olympiad Foundation</option>
+          </select>
+          <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-display font-bold py-3.5 rounded-xl shadow-lg transition">
+            Generate My Pass ID Now
+          </button>
+        </form>
+      </div>
+
+      <!-- Generated Pass Ticket View -->
+      <div id="demo-pass-view" class="hidden text-center space-y-4">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mx-auto">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h3 class="font-display font-extrabold text-2xl text-slate-900">Your Demo Pass is Ready!</h3>
+        <div class="bg-slate-900 text-white p-5 rounded-2xl border border-dashed border-amber-400 text-left space-y-1.5">
+          <div class="text-[10px] uppercase tracking-widest text-amber-400 font-bold">Official 3-Day Classroom Pass</div>
+          <div id="pass-id-text" class="font-display font-extrabold text-2xl tracking-wider text-white">VAN-2026-8492</div>
+          <div id="pass-student-text" class="text-xs text-slate-300">Student: Aarav Sharma</div>
+          <div class="text-[11px] text-emerald-400 pt-1"><i class="fa-solid fa-shield-check mr-1"></i> Valid at Main Sector-14 & Model Town Campuses</div>
+        </div>
+        <button id="pass-whatsapp-btn" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-base"></i> Send Pass Copy to Reception WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION JAVASCRIPT (ROUTER, DATA, CALCULATOR, AI CHATBOT)         -->
+  <!-- ===================================================================== -->
+  <script>
+    // Replace with client's actual WhatsApp number when delivering project
+    const INSTITUTE_WHATSAPP = "919876543210";
+
+    // ---------------- 1. MULTI-PAGE ROUTER ----------------
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById(`page-${pageId}`);
+      if (target) target.classList.add('active');
+
+      // Update active nav style
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.dataset.nav === pageId) {
+          btn.className = "nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition text-brand-600 bg-brand-50";
+        } else {
+          btn.className = "nav-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition";
+        }
+      });
+
+      window.location.hash = pageId;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('hashchange', () => {
+      const page = window.location.hash.replace('#', '') || 'home';
+      if (document.getElementById(`page-${page}`)) navigateTo(page);
+    });
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // ---------------- 2. COURSES DATA & FILTER ----------------
+    const coursesData = [
+      {
+        id: 1, category: 'jee', badge: 'Most Popular • Class 11 Moving',
+        title: 'Sankalp 2-Year IIT-JEE (Mains + Advanced)',
+        batchDate: 'Nov 5, 2026', seatsLeft: 7, totalSeats: 40,
+        fee: '₹1,15,000 / yr', duration: '24 Months (6 Days/Wk)',
+        highlights: ['Complete Class 11 & 12 NCERT + Advanced Modules', '38 Full-Length NTA CBT Mock Exams', 'Daily 1-on-1 IITian Faculty Doubt Table']
+      },
+      {
+        id: 2, category: 'neet', badge: 'Medical Flagship • Class 11/12',
+        title: 'Pranav 2-Year NEET-UG Medical Mastery',
+        batchDate: 'Nov 10, 2026', seatsLeft: 5, totalSeats: 40,
+        fee: '₹1,10,000 / yr', duration: '24 Months (6 Days/Wk)',
+        highlights: ['NCERT Line-by-Line Bio & Chemistry Drill', '20,000+ Statement & Assertion-Reason Question Bank', 'Weekly OMR Speed & Accuracy Benchmarking']
+      },
+      {
+        id: 3, category: 'jee', badge: '12th Pass / Dropper Intensive',
+        title: 'Yoddha 1-Year JEE Rank Booster Batch',
+        batchDate: 'Nov 12, 2026', seatsLeft: 11, totalSeats: 40,
+        fee: '₹95,000', duration: '10 Months Intensive',
+        highlights: ['Fast-track 11th + 12th High-Weightage Coverage', 'Daily 6-Hour Supervised Library + CBT Practice', 'Previous 22 Years PYQ Chapter-wise Mastery']
+      },
+      {
+        id: 4, category: 'neet', badge: '12th Pass Medical Repeater',
+        title: 'Aarogyam 1-Year NEET 650+ Target Batch',
+        batchDate: 'Nov 12, 2026', seatsLeft: 9, totalSeats: 40,
+        fee: '₹95,000', duration: '10 Months Intensive',
+        highlights: ['Special Physics Numericals Remediation Clinic', 'Daily 100-MCQ Timed Bio + Chem Sprint', 'Personal Mentorship by Govt Medical College Alumni']
+      },
+      {
+        id: 5, category: 'foundation', badge: 'Class 9th & 10th • School + Olympiad',
+        title: 'Neev Olympiad, NTSE & Early JEE/NEET Prep',
+        batchDate: 'Nov 15, 2026', seatsLeft: 14, totalSeats: 35,
+        fee: '₹52,000 / yr', duration: '12 Months (4 Days/Wk)',
+        highlights: ['95%+ School Board Exam Answer-Writing Prep', 'NSEJS, IOQM & SOF Olympiad Training', 'Early Analytical Thinking & Mental Math Labs']
+      },
+      {
+        id: 6, category: 'jee', badge: 'Class 12th Board + Entrance',
+        title: 'Lakshya 1-Year Class 12th JEE + CBSE Sync',
+        batchDate: 'Nov 18, 2026', seatsLeft: 12, totalSeats: 40,
+        fee: '₹98,000', duration: '12 Months',
+        highlights: ['12th Syllabus Completed by October End', '11th Revision Crash Course Built-In (Nov-Dec)', 'CBSE Practical & Subjective Mock Papers Included']
+      }
+    ];
+
+    function renderCourses(filter = 'all') {
+      const grid = document.getElementById('courses-grid');
+      const filtered = filter === 'all' ? coursesData : coursesData.filter(c => c.category === filter);
+
+      grid.innerHTML = filtered.map(c => {
+        const fillPercent = Math.round(((c.totalSeats - c.seatsLeft) / c.totalSeats) * 100);
+        return `
+          <div class="bg-white rounded-3xl border border-slate-200/90 p-6 shadow-sm hover:shadow-xl transition flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center gap-2 mb-3">
+                <span class="bg-brand-50 text-brand-700 text-[11px] font-bold px-3 py-1 rounded-full">${c.badge}</span>
+                <span class="text-xs font-bold text-slate-400">${c.duration}</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-900">${c.title}</h3>
+
+              <!-- Seat Scarcity Progress -->
+              <div class="mt-4 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <div class="flex justify-between text-xs font-bold mb-1">
+                  <span class="text-slate-600"><i class="fa-regular fa-calendar mr-1 text-brand-600"></i> Starts: ${c.batchDate}</span>
+                  <span class="text-orange-600">Only ${c.seatsLeft} of ${c.totalSeats} seats left</span>
+                </div>
+                <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+                  <div class="bg-gradient-to-r from-brand-600 to-orange-500 h-full rounded-full" style="width: ${fillPercent}%"></div>
+                </div>
+              </div>
+
+              <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                ${c.highlights.map(h => `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i><span>${h}</span></li>`).join('')}
+              </ul>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-slate-400 block">Standard Fee</span>
+                <span class="font-display font-extrabold text-xl text-slate-900">${c.fee}</span>
+              </div>
+              <div class="flex gap-2">
+                <button onclick="navigateTo('scholarship')" class="px-3 py-2.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs transition">
+                  Calc Waiver
+                </button>
+                <button onclick="openDemoModal()" class="px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition shadow">
+                  Book Demo
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterCourses(category) {
+      document.querySelectorAll('.course-filter-btn').forEach(btn => {
+        if (btn.dataset.courseFilter === category) {
+          btn.className = "course-filter-btn bg-brand-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition shadow";
+        } else {
+          btn.className = "course-filter-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-5 py-2.5 rounded-xl text-sm font-bold transition";
+        }
+      });
+      renderCourses(category);
+    }
+
+    // ---------------- 3. RESULTS DATA & YEAR FILTER ----------------
+    const resultsData = [
+      { year: '2026', air: 'AIR 14', name: 'ChiragBansal', exam: 'JEE Advanced 2026', program: '2-Yr Classroom (Sankalp)', score: '318 / 360', img: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=250&q=80' },
+      { year: '2026', air: 'AIR 29', name: 'Riya Deshmukh', exam: 'NEET-UG 2026', program: '2-Yr Classroom (Pranav)', score: '715 / 720', img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80' },
+      { year: '2026', air: 'AIR 64', name: 'Kunal Hooda', exam: 'JEE Advanced 2026', program: '2-Yr Classroom (Sankalp)', score: '296 / 360', img: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=250&q=80' },
+      { year: '2026', air: 'AIR 112', name: 'Sneha Dahiya', exam: 'NEET-UG 2026', program: '1-Yr Dropper (Aarogyam)', score: '706 / 720', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=250&q=80' },
+      { year: '2025', air: 'AIR 19', name: 'AdityaSangwan', exam: 'JEE Advanced 2025', program: '2-Yr Classroom', score: '312 / 360', img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=250&q=80' },
+      { year: '2025', air: 'AIR 41', name: 'Pooja Malik', exam: 'NEET-UG 2025', program: '2-Yr Classroom', score: '710 / 720', img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=250&q=80' },
+      { year: '2025', air: 'AIR 88', name: 'Harshvardhan', exam: 'JEE Mains 2025', program: '1-Yr Dropper', score: '99.94 %ile', img: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=250&q=80' },
+      { year: '2025', air: 'AIR 145', name: 'Tanvi Gupta', exam: 'NEET-UG 2025', program: '2-Yr Classroom', score: '701 / 720', img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=250&q=80' },
+      { year: '2024', air: 'AIR 33', name: 'Rohan Khatri', exam: 'JEE Advanced 2024', program: '2-Yr Classroom', score: '304 / 360', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80' },
+      { year: '2024', air: 'AIR 52', name: 'Anjali Verma', exam: 'NEET-UG 2024', program: '2-Yr Classroom', score: '710 / 720', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80' },
+      { year: '2024', air: 'AIR 94', name: 'Mayank Garg', exam: 'JEE Advanced 2024', program: '1-Yr Dropper', score: '285 / 360', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80' },
+      { year: '2024', air: 'AIR 178', name: 'Kritika Sharma', exam: 'NEET-UG 2024', program: '2-Yr Classroom', score: '696 / 720', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80' }
+    ];
+
+    function filterResults(year) {
+      document.querySelectorAll('.year-btn').forEach(btn => {
+        if (btn.dataset.year === year) {
+          btn.className = "year-btn bg-white text-slate-900 shadow px-4 py-2 rounded-lg text-sm font-bold transition";
+        } else {
+          btn.className = "year-btn text-slate-600 px-4 py-2 rounded-lg text-sm font-bold transition";
+        }
+      });
+
+      const grid = document.getElementById('results-grid');
+      const filtered = resultsData.filter(r => r.year === year);
+      grid.innerHTML = filtered.map(r => `
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 text-center shadow-sm hover:shadow-lg transition relative overflow-hidden">
+          <div class="bg-amber-400 text-slate-950 font-display font-extrabold text-sm px-4 py-1 rounded-full inline-block mb-4 shadow">
+            🏆 ${r.air}
+          </div>
+          <img src="${r.img}" alt="${r.name}" class="w-24 h-24 rounded-full object-cover mx-auto ring-4 ring-brand-100 mb-3" />
+          <h4 class="font-display font-bold text-lg text-slate-900">${r.name}</h4>
+          <p class="text-brand-600 font-bold text-xs uppercase mt-0.5">${r.exam}</p>
+          <p class="text-slate-500 text-xs mt-1">${r.program}</p>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-extrabold text-emerald-700">
+            Score: ${r.score}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ---------------- 4. SCHOLARSHIP CALCULATOR & MINI QUIZ ----------------
+    let quizBonusUnlocked = false;
+
+    function updateScholarshipCalc() {
+      const baseFee = parseInt(document.getElementById('calc-course').value, 10);
+      const score = parseInt(document.getElementById('calc-score').value, 10);
+      const payPlan = document.querySelector('input[name="payplan"]:checked').value;
+
+      document.getElementById('calc-score-display').textContent = `${score}%`;
+
+      let discountPct = 0;
+      if (score >= 96) discountPct = 75;
+      else if (score >= 92) discountPct = 50;
+      else if (score >= 85) discountPct = 30;
+      else if (score >= 75) discountPct = 15;
+      else discountPct = 5;
+
+      if (payPlan === 'lumpsum') discountPct += 5;
+      if (quizBonusUnlocked) discountPct += 5;
+
+      const discountAmt = Math.round((baseFee * discountPct) / 100);
+      const finalFee = baseFee - discountAmt;
+
+      document.getElementById('calc-tier-badge').textContent = `${discountPct}% Total Waiver`;
+      document.getElementById('calc-base-fee').textContent = `₹${baseFee.toLocaleString('en-IN')}`;
+      document.getElementById('calc-discount-amt').textContent = `- ₹${discountAmt.toLocaleString('en-IN')}`;
+      document.getElementById('calc-final-fee').textContent = `₹${finalFee.toLocaleString('en-IN')}`;
+
+      const emiNote = document.getElementById('calc-emi-note');
+      if (payPlan === 'emi') {
+        const perInstallment = Math.round(finalFee / 3);
+        emiNote.textContent = `Payable in 3 interest-free installments of ₹${perInstallment.toLocaleString('en-IN')} each.`;
+      } else {
+        emiNote.textContent = `Includes Extra 5% Lump-Sum Rebate + Printed Study Kit & GST.`;
+      }
+    }
+
+    function evaluateMiniQuiz() {
+      let correctCount = 0;
+      ['q1', 'q2', 'q3'].forEach(q => {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === 'correct') correctCount++;
+      });
+
+      const feedback = document.getElementById('quiz-feedback');
+      if (correctCount >= 2) {
+        quizBonusUnlocked = true;
+        feedback.innerHTML = `<span class="text-emerald-600"><i class="fa-solid fa-party-horn mr-1"></i> Awesome! You scored ${correctCount}/3. Extra +5% Scholarship Bonus UNLOCKED above!</span>`;
+        document.getElementById('quiz-badge').className = "text-xs font-bold uppercase px-2.5 py-1 rounded bg-emerald-600 text-white";
+        document.getElementById('quiz-badge').textContent = "Unlocked +5%";
+        document.getElementById('quiz-bonus-status').textContent = "Applied directly to your fee quote on the right!";
+        updateScholarshipCalc();
+      } else {
+        feedback.innerHTML = `<span class="text-rose-600">You scored ${correctCount}/3. Hint: Max height H = u²/2g = 20m, Mg²⁺ has 10 electrons, and b²-4ac=0 gives k=9. Try again!</span>`;
+      }
+    }
+
+    function lockScholarshipWhatsApp() {
+      const courseSelect = document.getElementById('calc-course');
+      const courseName = courseSelect.options[courseSelect.selectedIndex].text.split('—')[0].trim();
+      const score = document.getElementById('calc-score').value;
+      const finalFee = document.getElementById('calc-final-fee').textContent;
+      const tier = document.getElementById('calc-tier-badge').textContent;
+      const code = `VSAT-${score}-${Math.floor(100 + Math.random() * 900)}`;
+
+      const text = encodeURIComponent(
+        `Hello Vanguard Admissions! 🎓\n\nI just calculated my scholarship on your website:\n• *Course:* ${courseName}\n• *Board Score:* ${score}%\n• *Unlocked Waiver:* ${tier}\n• *Net Fee Quote:* ${finalFee}\n• *Scholarship Coupon:* ${code}\n\nPlease help me lock this fee waiver and schedule my free demo class.`
+      );
+      window.open(`https://wa.me/${INSTITUTE_WHATSAPP}?text=${text}`, '_blank');
+    }
+
+    // ---------------- 5. FORMS & DEMO PASS GENERATOR ----------------
+    function handleQuickEnquiry(e) {
+      e.preventDefault();
+      const name = document.getElementById('hero-name').value;
+      const exam = document.getElementById('hero-exam').value;
+      const stdClass = document.getElementById('hero-class').value;
+      const phone = document.getElementById('hero-phone').value;
+
+      const text = encodeURIComponent(
+        `Hi Vanguard Academy! 👋\nI would like to receive the *2026-27 Fee Structure & Syllabus PDF*.\n\n• *Student Name:* ${name}\n• *Target Exam:* ${exam}\n• *Current Class:* ${stdClass}\n• *Mobile:* ${phone}`
+      );
+      window.open(`https://wa.me/${INSTITUTE_WHATSAPP}?text=${text}`, '_blank');
+    }
+
+    function openDemoModal() {
+      document.getElementById('demo-modal').classList.remove('hidden');
+      document.getElementById('demo-form-view').classList.remove('hidden');
+      document.getElementById('demo-pass-view').classList.add('hidden');
+    }
+
+    function closeDemoModal() {
+      document.getElementById('demo-modal').classList.add('hidden');
+    }
+
+    function generateDemoPass(e) {
+      e.preventDefault();
+      const name = document.getElementById('modal-name').value;
+      const phone = document.getElementById('modal-phone').value;
+      const course = document.getElementById('modal-course').value;
+      const passId = `VAN-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      document.getElementById('demo-form-view').classList.add('hidden');
+      document.getElementById('demo-pass-view').classList.remove('hidden');
+      document.getElementById('pass-id-text').textContent = passId;
+      document.getElementById('pass-student-text').textContent = `${name} • ${course}`;
+
+      document.getElementById('pass-whatsapp-btn').onclick = () => {
+        const msg = encodeURIComponent(
+          `Hello Vanguard Reception! 🎟️\nI have generated my *Free 3-Day Classroom Demo Pass*:\n\n• *Pass ID:* ${passId}\n• *Student:* ${name}\n• *Batch:* ${course}\n• *Phone:* ${phone}\n\nPlease share the classroom reporting time for tomorrow.`
+        );
+        window.open(`https://wa.me/${INSTITUTE_WHATSAPP}?text=${msg}`, '_blank');
+      };
+    }
+
+    function selectBranch(idx) {
+      const cards = document.querySelectorAll('.branch-card');
+      cards.forEach((c, i) => {
+        if (i === idx) {
+          c.className = "branch-card cursor-pointer p-5 rounded-2xl border-2 border-brand-600 bg-brand-50/40 transition";
+        } else {
+          c.className = "branch-card cursor-pointer p-5 rounded-2xl border-2 border-slate-200 bg-white hover:border-brand-300 transition";
+        }
+      });
+      document.getElementById('contact-branch').selectedIndex = idx;
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const phone = document.getElementById('contact-phone').value;
+      const branch = document.getElementById('contact-branch').value;
+      const day = document.getElementById('contact-day').value;
+      const msg = document.getElementById('contact-msg').value || 'N/A';
+
+      const text = encodeURIComponent(
+        `Hello Vanguard Counseling Desk! 📍\nI want to book a 1-on-1 Academic Counseling Visit:\n\n• *Name:* ${name}\n• *Phone:* ${phone}\n• *Campus:* ${branch}\n• *Preferred Slot:* ${day}\n• *Query:* ${msg}`
+      );
+      window.open(`https://wa.me/${INSTITUTE_WHATSAPP}?text=${text}`, '_blank');
+    }
+
+    // ---------------- 6. AI ADMISSIONS COUNSELOR CHATBOT ----------------
+    function toggleChatbot() {
+      const win = document.getElementById('chatbot-window');
+      win.classList.toggle('hidden');
+    }
+
+    function sendQuickChat(message) {
+      document.getElementById('chat-input').value = message;
+      handleChatSubmit(new Event('submit'));
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      const chatBox = document.getElementById('chat-messages');
+
+      // Append User Bubble
+      chatBox.innerHTML += `
+        <div class="flex justify-end">
+          <div class="bg-brand-600 text-white p-3 rounded-2xl rounded-tr-none max-w-[82%] shadow-sm">
+            ${userText}
+          </div>
+        </div>
+      `;
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      // Bot Response Engine
+      setTimeout(() => {
+        const reply = getSmartBotReply(userText.toLowerCase());
+        chatBox.innerHTML += `
+          <div class="bg-white border border-slate-200/80 text-slate-800 p-3.5 rounded-2xl rounded-tl-none shadow-sm max-w-[88%]">
+            ${reply}
+          </div>
+        `;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 450);
+    }
+
+    function getSmartBotReply(q) {
+      if (q.includes('fee') || q.includes('cost') || q.includes('price')) {
+        return `💰 <strong>2026–27 Standard Tuition Fees:</strong><br>• 2-Yr JEE: ₹1,15,000/yr<br>• 2-Yr NEET: ₹1,10,000/yr<br>• 1-Yr Dropper: ₹95,000<br>• Class 9–10 Foundation: ₹52,000/yr<br><br>Most students pay <strong>30% to 75% less</strong> via scholarships! <button onclick="navigateTo('scholarship')" class="mt-1.5 text-brand-600 font-bold underline block">Open Live Fee Calculator →</button>`;
+      }
+      if (q.includes('scholar') || q.includes('discount') || q.includes('waiver')) {
+        return `🎓 You can get up to a <strong>90% Tuition Waiver</strong> based on your Class 10th/12th Board marks or our Sunday V-SAT exam.<br><button onclick="navigateTo('scholarship')" class="mt-2 bg-amber-400 text-slate-950 font-bold px-3 py-1.5 rounded-lg text-xs">Calculate My Exact Scholarship →</button>`;
+      }
+      if (q.includes('batch') || q.includes('timing') || q.includes('start')) {
+        return `📅 <strong>Upcoming Batch Starts Nov 5, 2026:</strong><br>• Morning (Droppers): 8:30 AM – 1:00 PM<br>• Evening (Class 11 & 12): 3:30 PM – 7:45 PM<br>Batch size is strictly capped at 40 students. <button onclick="navigateTo('courses')" class="text-brand-600 font-bold underline block mt-1">View All Batches →</button>`;
+      }
+      if (q.includes('demo') || q.includes('trial') || q.includes('free')) {
+        return `🎟️ We offer a <strong>Free 3-Day Classroom Demo Pass</strong>! You can attend live Physics, Chemistry & Math/Bio lectures before paying anything.<br><button onclick="openDemoModal()" class="mt-2 bg-brand-600 text-white font-bold px-3 py-1.5 rounded-lg text-xs">Generate Free Demo Pass →</button>`;
+      }
+      if (q.includes('hostel') || q.includes('transport') || q.includes('van') || q.includes('address')) {
+        return `🏢 Our Main Sector-14 Campus features AC Boys & Girls Hostels (with 24/7 warden & night doubt faculty) plus GPS-tracked AC transport vans covering a 35 km radius. <button onclick="navigateTo('contact')" class="text-brand-600 font-bold underline block mt-1">See Campus Locations →</button>`;
+      }
+      return `Great question! Let me connect you directly with our Senior Academic Counselor on WhatsApp for exact details, or you can explore our <button onclick="navigateTo('courses')" class="text-brand-600 font-bold underline">Courses</button> & <button onclick="navigateTo('scholarship')" class="text-brand-600 font-bold underline">Scholarship Calculator</button>.<br><a href="https://wa.me/${INSTITUTE_WHATSAPP}?text=Hi%20Vanguard%20Counselor,%20I%20have%20a%20query%20regarding%20admissions" target="_blank" class="mt-2 inline-block bg-emerald-500 text-slate-950 font-bold px-3 py-1.5 rounded-lg text-xs"><i class="fa-brands fa-whatsapp mr-1"></i> Chat with Human Counselor</a>`;
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCourses('all');
+      filterResults('2026');
+      updateScholarshipCalc();
+      const initialHash = window.location.hash.replace('#', '');
+      if (initialHash && document.getElementById(`page-${initialHash}`)) {
+        navigateTo(initialHash);
+      }
+    });
+  </script>
+</body>
+</html>
